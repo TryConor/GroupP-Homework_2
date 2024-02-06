@@ -1,10 +1,13 @@
 package hw2;
 
 public class Student {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	
+	private int id;
+	private String name;
+	private double grade;
+	
+	public Student(int id, String name, double grade) {
+		
 	}
 
 }
