@@ -1,6 +1,9 @@
 package hw2;
 
 import hw2.Student;
+import java.io.IOException;
+import java.util.Scanner;
+import java.io.FileInputStream;
 
 public class StudentManager {
 	private Student[] students;
@@ -8,6 +11,40 @@ public class StudentManager {
     
     public StudentManager() {
         students = new Student[0];
+    }
+    
+    public boolean readFromFile(String fileName) {
+    	//use Scanner and FileInputStream to read in data from the specified fileName
+        try (Scanner fileReader = new Scanner(new FileInputStream(fileName))) {
+        	while(fileReader.hasNextLine()) {
+				//read in data from file line by line
+				String data = fileReader.nextLine();
+				
+				//separate data on each line into different categories of student data
+				String[] parts = data.split(" ");
+				
+				//make sure data on each line split up into 4 parts 
+				// and assign to id, name (first and last put together, and grade for each student
+				//then add student to array of students (using addStudentToArray method)
+                if (parts.length == 4) {
+                    int id = Integer.parseInt(parts[0]);
+                    String firstName = parts[1];
+                    String lastName = parts[2];
+                    double grade = Double.parseDouble(parts[3]);
+                    Student student = new Student(id, firstName,lastName, grade);
+                    addStudentToArray(student);
+                } 
+                else {
+                    System.out.println("Invalid line format: " + data);
+                }
+            }
+        } 
+        //display error if there is a problem accessing and reading the file
+        catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+            return false;
+        }
+        return true;
     }
     
     public void addStudentToArray(Student student) {
