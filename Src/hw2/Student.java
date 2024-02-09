@@ -3,14 +3,16 @@ package hw2;
 public class Student {
 	
 	private int id;
-	private String name;
+	private String FirstName;
+	private String LastName;
 	private double grade;
 	
-	public Student(int id, String name, double grade) {
-		this.id = id;
-        this.name = name;
+	public Student(int id, String FirstName, String LastName, double grade) {
+        this.id = id;
+        this.FirstName = FirstName;
+        this.LastName = LastName;
         this.grade = grade;
-	}
+    }
 
 	public int getId() {
 		return id;
@@ -20,12 +22,20 @@ public class Student {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return FirstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		FirstName = firstName;
+	}
+
+	public String getLastName() {
+		return LastName;
+	}
+
+	public void setLastName(String lastName) {
+		LastName = lastName;
 	}
 
 	public double getGrade() {
@@ -36,10 +46,22 @@ public class Student {
 		this.grade = grade;
 	}
 
-	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", grade=" + grade + "]";
-	}
+	@Override
+    public String toString() {
+        return "id: " + id + ", name: " + FirstName + " " + LastName + ", grade: " + grade;
+    }
 	
+	@Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Student student = (Student) obj;
+        return id == student.id;
+    }
 	
 
 }
