@@ -61,9 +61,11 @@ public class StudentManager {
     }
     
     public void displayStudents() {
+    	// If the length of students is 0 which means it has no students then print out no students found 
         if (students.length == 0) {
             System.out.println("No students found.\n");
         } else {
+        // If there is students in students and length is not equal to 0 then print out each student in students 
         	System.out.println("\n");
             for (Student student : students) {
             	System.out.println(student.toString());
