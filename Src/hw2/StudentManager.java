@@ -67,6 +67,7 @@ public class StudentManager {
         } else {
         // If there is students in students and length is not equal to 0 then print out each student in students 
         	System.out.println("\n");
+        	//for each student in students print them toString
             for (Student student : students) {
             	System.out.println(student.toString());
             }
