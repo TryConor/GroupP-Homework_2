@@ -1,4 +1,4 @@
- 101 John Doe 85.5
+101 John Doe 85.5
 102 Jane Smith 92.0
 103 Bob Johnson 78.5
 104 Alice Brown 88.0

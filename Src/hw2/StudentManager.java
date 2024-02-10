@@ -13,6 +13,35 @@ public class StudentManager {
         students = new Student[0];
     }
     
+    //Takes an ID as input and searches for a student with the given ID in the "students" array
+    //If found, prints student's information and returns true
+    //If not found, prints message and returns false
+    public boolean searchStudentById(int id) {
+    	for(Student student : students) {
+    		if (student.getId() == id) {
+    			System.out.println("Student found: "+ student.toString());
+    			return true;
+    		}
+    	}
+    	System.out.println("Student with ID "+ id + " not found.");
+    	return false;
+    }
+    
+    //Takes an ID and a new grade as input
+    //Searches for a student with the given ID in the "students" array
+    //If found updates student grade with the new grade otherwise does not update grade if not found 
+    public boolean updateStudentGradeById(int id, double newGrade) {
+    	for(Student student : students) {
+    		if(student.getId() == id) {
+    			student.setGrade(newGrade);
+    			System.out.println("Grade updated for student with ID "+ id + ".");
+    			return true;
+    		}
+    	}
+    	System.out.println("Student with ID"+ id + "not found. Grade not updated.");
+    	return false;
+    }
+    
     public boolean readFromFile(String fileName) {
     	//use Scanner and FileInputStream to read in data from the specified fileName
         try (Scanner fileReader = new Scanner(new FileInputStream(fileName))) {
